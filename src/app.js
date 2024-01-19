@@ -6,11 +6,10 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  //write your code here
-  let who = ["The dog", "My grandma", "His turtle", "My bird"];
-  let action = ["ate", "peed", "crushed", "broke"];
-  let what = ["my homework", "the keys", "the car"];
-  let when = [
+  const who = ["The dog", "My grandma", "His turtle", "My bird"];
+  const action = ["ate", "peed", "crushed", "broke"];
+  const what = ["my homework", "the keys", "the car"];
+  const when = [
     "before the class",
     "right on time",
     "when I finished",
@@ -18,18 +17,22 @@ window.onload = function() {
     "while I was praying"
   ];
 
-  function randomNumber(length) {
-    return Math.floor(Math.random() * length);
+  function getRandomIndex(array) {
+    return Math.floor(Math.random() * array.length);
   }
-  let sentence = "";
-  sentence += who[randomNumber(who.length)];
-  sentence += " ";
-  sentence += action[randomNumber(action.length)];
-  sentence += " ";
-  sentence += what[randomNumber(what.length)];
-  sentence += " ";
-  sentence += when[randomNumber(when.length)];
-  sentence += ".";
-  document.getElementById("idExcuse").textContent = sentence;
-  console.log(sentence);
+
+  function generateExcuse() {
+    const sentence =
+      who[getRandomIndex(who)] +
+      " " +
+      action[getRandomIndex(action)] +
+      " " +
+      what[getRandomIndex(what)] +
+      " " +
+      when[getRandomIndex(when)] +
+      ".";
+    return sentence;
+  }
+
+  document.getElementById("idExcuse").textContent = generateExcuse();
 };
